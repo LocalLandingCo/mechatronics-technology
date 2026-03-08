@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => (
   <footer className="relative bg-card/80 border-t border-border py-12 noise-bg">
     <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -19,12 +21,18 @@ const Footer = () => (
             {['Home', 'About', 'Products', 'Markets', 'Contact'].map((link) => (
               <a
                 key={link}
-                href={`#${link.toLowerCase()}`}
+                href={`/#${link.toLowerCase()}`}
                 className="font-barlow text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 {link}
               </a>
             ))}
+            <Link
+              to="/careers"
+              className="font-barlow text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Careers
+            </Link>
           </div>
         </div>
 

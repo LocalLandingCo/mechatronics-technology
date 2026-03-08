@@ -1,5 +1,5 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Shield, Car, FlaskConical, Cog, Cpu, GraduationCap, Wrench } from 'lucide-react';
+import { Shield, Car, FlaskConical, Cog, Cpu, Wrench } from 'lucide-react';
 
 const sectors = [
   { icon: Shield, title: 'Defense', desc: 'Precision sensors for military platforms, artillery systems, and defense R&D applications' },
@@ -7,7 +7,6 @@ const sectors = [
   { icon: FlaskConical, title: 'Research & Development', desc: 'High-accuracy instruments for academic and industrial research laboratories' },
   { icon: Cog, title: 'Industrial Automation', desc: 'Sensing solutions for automated manufacturing, robotics, and process control' },
   { icon: Cpu, title: 'Consumer Electronics', desc: 'Micro-sensors and measurement tools for electronic device testing and QC' },
-  { icon: GraduationCap, title: 'Educational Institutes', desc: 'Lab-grade instruments for engineering colleges and technical training centers' },
   { icon: Wrench, title: 'Engineering', desc: 'General-purpose measurement tools for mechanical, civil, and structural engineering' },
 ];
 
@@ -20,7 +19,7 @@ const Markets = () => {
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
           <span className="font-barlow text-xs tracking-widest text-primary uppercase">Markets We Serve</span>
           <h2 className="font-rajdhani font-bold text-3xl md:text-4xl lg:text-5xl mt-3 text-foreground">
-            Trusted Across <span className="text-primary">7+ Sectors</span>
+            Trusted Across <span className="text-primary">6+ Sectors</span>
           </h2>
         </div>
 
