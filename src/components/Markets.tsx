@@ -7,7 +7,6 @@ const sectors = [
   { icon: FlaskConical, title: 'Research & Development', desc: 'High-accuracy instruments for academic and industrial research laboratories' },
   { icon: Cog, title: 'Industrial Automation', desc: 'Sensing solutions for automated manufacturing, robotics, and process control' },
   { icon: Cpu, title: 'Consumer Electronics', desc: 'Micro-sensors and measurement tools for electronic device testing and QC' },
-  { icon: GraduationCap, title: 'Educational Institutes', desc: 'Lab-grade instruments for engineering colleges and technical training centers' },
   { icon: Wrench, title: 'Engineering', desc: 'General-purpose measurement tools for mechanical, civil, and structural engineering' },
 ];
 
