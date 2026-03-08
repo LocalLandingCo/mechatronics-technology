@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => (
   <footer className="relative bg-card/80 border-t border-border py-12 noise-bg">
     <div className="container mx-auto px-4 md:px-8 relative z-10">
