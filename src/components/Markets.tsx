@@ -1,5 +1,5 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Shield, Car, FlaskConical, Cog, Cpu, GraduationCap, Wrench } from 'lucide-react';
+import { Shield, Car, FlaskConical, Cog, Cpu, Wrench } from 'lucide-react';
 
 const sectors = [
   { icon: Shield, title: 'Defense', desc: 'Precision sensors for military platforms, artillery systems, and defense R&D applications' },
