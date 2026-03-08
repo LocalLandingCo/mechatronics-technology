@@ -21,12 +21,18 @@ const Footer = () => (
             {['Home', 'About', 'Products', 'Markets', 'Contact'].map((link) => (
               <a
                 key={link}
-                href={`#${link.toLowerCase()}`}
+                href={`/#${link.toLowerCase()}`}
                 className="font-barlow text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 {link}
               </a>
             ))}
+            <Link
+              to="/careers"
+              className="font-barlow text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Careers
+            </Link>
           </div>
         </div>
 
