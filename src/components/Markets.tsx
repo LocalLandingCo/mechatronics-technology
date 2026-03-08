@@ -19,7 +19,7 @@ const Markets = () => {
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
           <span className="font-barlow text-xs tracking-widest text-primary uppercase">Markets We Serve</span>
           <h2 className="font-rajdhani font-bold text-3xl md:text-4xl lg:text-5xl mt-3 text-foreground">
-            Trusted Across <span className="text-primary">7+ Sectors</span>
+            Trusted Across <span className="text-primary">6+ Sectors</span>
           </h2>
         </div>
 
