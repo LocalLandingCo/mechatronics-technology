@@ -55,13 +55,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link to="/" className="font-rajdhani font-bold text-lg md:text-xl tracking-wider text-foreground">
+        <Link to="/" className="font-rajdhani font-bold text-lg md:text-xl tracking-wider text-foreground shrink-0 mr-12">
           <span className="text-primary">MECHATRONICS</span>{' '}
           <span className="hidden sm:inline">TECHNOLOGY</span>
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8 ml-auto">
           {navLinks.map((link) => renderLink(link))}
           <ThemeToggle />
           <a
