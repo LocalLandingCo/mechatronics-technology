@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Gauge, Weight, RotateCcw, Package, ChevronRight, ChevronDown, ArrowRight, Shield, Tag, Boxes, Layers } from 'lucide-react';
+import { Gauge, Weight, RotateCcw, Package, ChevronRight, ChevronDown, ArrowRight, Shield, Tag, Boxes, Layers, X, ExternalLink } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 type SubProduct = {
   title: string;
@@ -170,11 +171,14 @@ const catalogue: MainCategory[] = [
   },
 ];
 
+const WHATSAPP_NUMBER = '918237813940';
+
 const Products = () => {
   const { ref, isVisible } = useScrollReveal();
   const [activeCategory, setActiveCategory] = useState<string>('transducers');
   const [expandedProduct, setExpandedProduct] = useState<string | null>(null);
   const [activeSubProduct, setActiveSubProduct] = useState<string | null>(null);
+  const [modalProduct, setModalProduct] = useState<SubProduct | ProductCategory | null>(null);
 
   const activeCat = catalogue.find((c) => c.id === activeCategory)!;
 
@@ -186,6 +190,15 @@ const Products = () => {
       setExpandedProduct(title);
       setActiveSubProduct(null);
     }
+  };
+
+  const openModal = (product: SubProduct | ProductCategory) => {
+    setModalProduct(product);
+  };
+
+  const requestQuote = (productTitle: string) => {
+    const msg = `Hi, I'm interested in *${productTitle}*. Please share pricing and availability details.`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   return (
@@ -300,6 +313,25 @@ const Products = () => {
                         </div>
                       )}
 
+                      {/* View Details & Quote buttons for products without sub-products */}
+                      {(!product.subProducts || product.subProducts.length === 0) && (
+                        <div className="flex flex-wrap gap-3 mb-4">
+                          <button
+                            onClick={() => openModal(product)}
+                            className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-5 py-2.5 rounded border border-primary/40 text-primary hover:bg-primary/10 transition-colors"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            View Details
+                          </button>
+                          <button
+                            onClick={() => requestQuote(product.title)}
+                            className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-5 py-2.5 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all"
+                          >
+                            Request Quote
+                          </button>
+                        </div>
+                      )}
+
                       {/* Sub Products */}
                       {product.subProducts && product.subProducts.length > 0 && (
                         <div>
@@ -313,14 +345,16 @@ const Products = () => {
                               return (
                                 <div
                                   key={sub.title}
-                                  className={`rounded-lg border overflow-hidden transition-all duration-300 cursor-pointer ${
+                                  className={`rounded-lg border overflow-hidden transition-all duration-300 ${
                                     isSubActive
                                       ? 'border-primary/40 bg-primary/5'
                                       : 'border-border/50 bg-muted/20 hover:border-primary/20'
                                   }`}
-                                  onClick={() => setActiveSubProduct(isSubActive ? null : sub.title)}
                                 >
-                                  <div className="flex items-center gap-4 p-4">
+                                  <div
+                                    className="flex items-center gap-4 p-4 cursor-pointer"
+                                    onClick={() => setActiveSubProduct(isSubActive ? null : sub.title)}
+                                  >
                                     <div className="w-14 h-14 rounded overflow-hidden bg-muted shrink-0 border border-border/50">
                                       <img src={sub.image} alt={sub.title} className="w-full h-full object-cover" loading="lazy" />
                                     </div>
@@ -330,14 +364,33 @@ const Products = () => {
                                     </div>
                                     <ChevronRight className={`w-4 h-4 shrink-0 transition-transform ${isSubActive ? 'rotate-90 text-primary' : 'text-muted-foreground'}`} />
                                   </div>
-                                  {isSubActive && sub.specs && (
-                                    <div className="px-4 pb-4 grid grid-cols-2 gap-2 border-t border-border/30 pt-3 animate-fade-up">
-                                      {Object.entries(sub.specs).map(([key, value]) => (
-                                        <div key={key} className="bg-background/50 rounded p-2">
-                                          <span className="font-barlow text-[9px] uppercase tracking-wider text-muted-foreground block">{key}</span>
-                                          <span className="font-rajdhani font-semibold text-xs text-foreground block">{value}</span>
+                                  {isSubActive && (
+                                    <div className="px-4 pb-4 border-t border-border/30 pt-3 animate-fade-up">
+                                      {sub.specs && (
+                                        <div className="grid grid-cols-2 gap-2 mb-3">
+                                          {Object.entries(sub.specs).map(([key, value]) => (
+                                            <div key={key} className="bg-background/50 rounded p-2">
+                                              <span className="font-barlow text-[9px] uppercase tracking-wider text-muted-foreground block">{key}</span>
+                                              <span className="font-rajdhani font-semibold text-xs text-foreground block">{value}</span>
+                                            </div>
+                                          ))}
                                         </div>
-                                      ))}
+                                      )}
+                                      <div className="flex flex-wrap gap-2">
+                                        <button
+                                          onClick={(e) => { e.stopPropagation(); openModal(sub); }}
+                                          className="font-rajdhani font-semibold text-xs flex items-center gap-1.5 px-4 py-2 rounded border border-primary/40 text-primary hover:bg-primary/10 transition-colors"
+                                        >
+                                          <ExternalLink className="w-3.5 h-3.5" />
+                                          View Details
+                                        </button>
+                                        <button
+                                          onClick={(e) => { e.stopPropagation(); requestQuote(sub.title); }}
+                                          className="font-rajdhani font-semibold text-xs flex items-center gap-1.5 px-4 py-2 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all"
+                                        >
+                                          Request Quote
+                                        </button>
+                                      </div>
                                     </div>
                                   )}
                                 </div>
@@ -365,6 +418,70 @@ const Products = () => {
           </a>
         </div>
       </div>
+
+      {/* Product Detail Modal */}
+      <Dialog open={!!modalProduct} onOpenChange={(open) => !open && setModalProduct(null)}>
+        <DialogContent className="max-w-2xl bg-card border-border max-h-[90vh] overflow-y-auto">
+          {modalProduct && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="font-rajdhani font-bold text-2xl text-foreground">
+                  {modalProduct.title}
+                </DialogTitle>
+              </DialogHeader>
+              <div className="mt-4 space-y-6">
+                {/* Image */}
+                <div className="w-full aspect-[16/10] rounded-lg overflow-hidden bg-muted border border-border">
+                  <img
+                    src={modalProduct.image}
+                    alt={modalProduct.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Description */}
+                <p className="font-barlow text-muted-foreground leading-relaxed">
+                  {modalProduct.description}
+                </p>
+
+                {/* Specs */}
+                {modalProduct.specs && (
+                  <div>
+                    <h4 className="font-rajdhani font-semibold text-sm uppercase tracking-wider text-primary mb-3">
+                      Technical Specifications
+                    </h4>
+                    <div className="grid grid-cols-2 gap-3">
+                      {Object.entries(modalProduct.specs).map(([key, value]) => (
+                        <div key={key} className="bg-muted/50 rounded-lg p-3 border border-border/50">
+                          <span className="font-barlow text-[10px] uppercase tracking-wider text-muted-foreground block">{key}</span>
+                          <span className="font-rajdhani font-semibold text-sm text-foreground mt-1 block">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA */}
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <button
+                    onClick={() => requestQuote(modalProduct.title)}
+                    className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow"
+                  >
+                    Request Quote on WhatsApp
+                  </button>
+                  <a
+                    href="#contact"
+                    onClick={() => setModalProduct(null)}
+                    className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded border border-border text-foreground hover:border-primary/40 transition-colors"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

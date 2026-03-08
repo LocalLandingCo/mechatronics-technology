@@ -5,6 +5,27 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
+const WHATSAPP_NUMBER = '918237813940';
+const RATE_LIMIT_KEY = 'wa_send_timestamps';
+const MAX_SENDS_PER_HOUR = 10;
+
+function canSend(): boolean {
+  const now = Date.now();
+  const oneHourAgo = now - 3600000;
+  const timestamps: number[] = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+  const recent = timestamps.filter((t) => t > oneHourAgo);
+  return recent.length < MAX_SENDS_PER_HOUR;
+}
+
+function recordSend() {
+  const now = Date.now();
+  const oneHourAgo = now - 3600000;
+  const timestamps: number[] = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+  const recent = timestamps.filter((t) => t > oneHourAgo);
+  recent.push(now);
+  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recent));
+}
+
 const Contact = () => {
   const { ref, isVisible } = useScrollReveal();
   const { toast } = useToast();
@@ -12,12 +33,39 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast({ title: 'Message Sent', description: 'We will get back to you shortly.' });
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+
+    if (!canSend()) {
+      toast({
+        title: 'Rate Limit Reached',
+        description: 'You can send a maximum of 10 messages per hour. Please try again later.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
+    const message = formData.get('message') as string;
+
+    const waMessage = `📩 *New Enquiry from Website*
+
+*Name:* ${name}
+*Email:* ${email}
+*Phone:* ${phone || 'Not provided'}
+
+*Message:*
+${message}`;
+
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+
+    recordSend();
+    window.open(waUrl, '_blank');
+
+    toast({ title: 'Redirecting to WhatsApp', description: 'Complete sending the message on WhatsApp.' });
+    form.reset();
   };
 
   return (
@@ -49,7 +97,7 @@ const Contact = () => {
               className="font-rajdhani font-semibold flex items-center gap-2 px-7 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              {loading ? 'Sending...' : 'Send Message'}
+              Send Message
             </button>
           </form>
 
