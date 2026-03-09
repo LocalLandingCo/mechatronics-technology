@@ -69,7 +69,7 @@ ${message}`;
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 noise-bg overflow-hidden" ref={ref}>
+    <section id="contact" className="relative py-14 md:py-20 noise-bg overflow-hidden" ref={ref}>
       <div className="absolute inset-0 gradient-mesh pointer-events-none" />
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>

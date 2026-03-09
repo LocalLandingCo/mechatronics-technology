@@ -420,11 +420,11 @@ const Products = () => {
               </DialogHeader>
               <div className="mt-4 space-y-6">
                 {/* Image */}
-                <div className="w-full aspect-[16/10] rounded-lg overflow-hidden bg-muted border border-border">
+                <div className="w-full aspect-[16/10] rounded-lg overflow-hidden bg-muted border border-border flex items-center justify-center">
                   <img
                     src={modalProduct.image}
                     alt={modalProduct.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-4"
                   />
                 </div>
 

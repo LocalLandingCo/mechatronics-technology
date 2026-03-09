@@ -14,7 +14,7 @@ const Markets = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="markets" className="relative py-24 md:py-32 noise-bg grid-lines overflow-hidden" ref={ref}>
+    <section id="markets" className="relative py-14 md:py-20 noise-bg grid-lines overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
           <span className="font-barlow text-xs tracking-widest text-primary uppercase">Markets We Serve</span>
