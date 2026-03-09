@@ -105,7 +105,7 @@ const catalogue: MainCategory[] = [
       },
       {
         title: 'Inclinometer Sensors',
-        image: '/images/products/rotary-torque-sensor.jpg',
+        image: '/images/products/inclinometer-sensor.jpg',
         description: 'High-precision inclinometers measuring orientation angle with respect to gravity. Used in solar tracking, crane monitoring, military, and structural applications.',
         specs: {
           'Angle Range': '0° to 360°',
