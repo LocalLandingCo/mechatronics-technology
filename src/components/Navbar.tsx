@@ -25,7 +25,7 @@ const Navbar = () => {
   }, []);
 
   const renderLink = (link: typeof navLinks[0], onClick?: () => void) => {
-    const className = "font-barlow text-sm tracking-wide text-muted-foreground hover:text-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full";
+    const className = "font-barlow text-base tracking-wide text-muted-foreground hover:text-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full";
     const mobileClassName = "font-barlow text-muted-foreground hover:text-primary transition-colors py-2";
 
     if (link.type === 'route') {

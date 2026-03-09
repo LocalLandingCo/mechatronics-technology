@@ -27,7 +27,7 @@ const About = () => {
             <div className="absolute w-[180px] h-[180px] md:w-[220px] md:h-[220px] border border-primary/10 rounded-lg rotate-[30deg] animate-orbit" style={{ animationDuration: '30s' }} />
             <div className="relative text-center -rotate-0">
               <div className="font-rajdhani font-bold text-5xl md:text-6xl text-primary text-glow-cyan">MT</div>
-              <div className="font-barlow text-xs text-muted-foreground tracking-widest mt-1">SINCE EST.</div>
+              <div className="font-barlow text-xs text-muted-foreground tracking-widest mt-1">SINCE 2018</div>
             </div>
           </div>
 

@@ -301,17 +301,6 @@ const Products = () => {
                 {isExpanded && (
                   <div className="border-t border-border animate-fade-up">
                     <div className="p-4 md:p-6">
-                      {/* Specs Grid */}
-                      {product.specs && (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-                          {Object.entries(product.specs).map(([key, value]) => (
-                            <div key={key} className="bg-muted/50 rounded-lg p-3 border border-border/50">
-                              <span className="font-barlow text-[10px] uppercase tracking-wider text-muted-foreground block">{key}</span>
-                              <span className="font-rajdhani font-semibold text-sm text-foreground mt-1 block">{value}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
 
                       {/* View Details & Quote buttons for products without sub-products */}
                       {(!product.subProducts || product.subProducts.length === 0) && (
