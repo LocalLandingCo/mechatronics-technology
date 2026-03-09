@@ -12,7 +12,7 @@ const About = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="about" className="relative py-24 md:py-32 noise-bg grid-lines overflow-hidden" ref={ref}>
+    <section id="about" className="relative py-14 md:py-20 noise-bg grid-lines overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Animated diagram */}
