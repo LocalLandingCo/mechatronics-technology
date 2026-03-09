@@ -202,7 +202,7 @@ const Products = () => {
   };
 
   return (
-    <section id="products" className="relative py-24 md:py-32 noise-bg overflow-hidden" ref={ref}>
+    <section id="products" className="relative py-14 md:py-20 noise-bg overflow-hidden" ref={ref}>
       <div className="absolute inset-0 gradient-mesh pointer-events-none" />
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
@@ -301,17 +301,6 @@ const Products = () => {
                 {isExpanded && (
                   <div className="border-t border-border animate-fade-up">
                     <div className="p-4 md:p-6">
-                      {/* Specs Grid */}
-                      {product.specs && (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-                          {Object.entries(product.specs).map(([key, value]) => (
-                            <div key={key} className="bg-muted/50 rounded-lg p-3 border border-border/50">
-                              <span className="font-barlow text-[10px] uppercase tracking-wider text-muted-foreground block">{key}</span>
-                              <span className="font-rajdhani font-semibold text-sm text-foreground mt-1 block">{value}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
 
                       {/* View Details & Quote buttons for products without sub-products */}
                       {(!product.subProducts || product.subProducts.length === 0) && (
@@ -431,11 +420,11 @@ const Products = () => {
               </DialogHeader>
               <div className="mt-4 space-y-6">
                 {/* Image */}
-                <div className="w-full aspect-[16/10] rounded-lg overflow-hidden bg-muted border border-border">
+                <div className="w-full aspect-[16/10] rounded-lg overflow-hidden bg-muted border border-border flex items-center justify-center">
                   <img
                     src={modalProduct.image}
                     alt={modalProduct.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-4"
                   />
                 </div>
 
