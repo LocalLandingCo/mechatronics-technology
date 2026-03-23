@@ -1,71 +1,50 @@
 import { useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Phone, MapPin, Mail, Send } from 'lucide-react';
+import { Phone, MapPin, Mail, Send, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
-const WHATSAPP_NUMBER = '918237813940';
-const RATE_LIMIT_KEY = 'wa_send_timestamps';
-const MAX_SENDS_PER_HOUR = 10;
-
-function canSend(): boolean {
-  const now = Date.now();
-  const oneHourAgo = now - 3600000;
-  const timestamps: number[] = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
-  const recent = timestamps.filter((t) => t > oneHourAgo);
-  return recent.length < MAX_SENDS_PER_HOUR;
-}
-
-function recordSend() {
-  const now = Date.now();
-  const oneHourAgo = now - 3600000;
-  const timestamps: number[] = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
-  const recent = timestamps.filter((t) => t > oneHourAgo);
-  recent.push(now);
-  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recent));
-}
+const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
 
 const Contact = () => {
   const { ref, isVisible } = useScrollReveal();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!canSend()) {
-      toast({
-        title: 'Rate Limit Reached',
-        description: 'You can send a maximum of 10 messages per hour. Please try again later.',
-        variant: 'destructive',
-      });
-      return;
-    }
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const phone = formData.get('phone') as string;
-    const message = formData.get('message') as string;
 
-    const waMessage = `📩 *New Enquiry from Website*
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: (formData.get('phone') as string) || 'Not provided',
+      message: formData.get('message') as string,
+    };
 
-*Name:* ${name}
-*Email:* ${email}
-*Phone:* ${phone || 'Not provided'}
+    setLoading(true);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
 
-*Message:*
-${message}`;
-
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
-
-    recordSend();
-    window.open(waUrl, '_blank');
-
-    toast({ title: 'Redirecting to WhatsApp', description: 'Complete sending the message on WhatsApp.' });
-    form.reset();
+      if (res.status === 200) {
+        toast({ title: 'Message Sent!', description: "We'll get back to you shortly." });
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      toast({ title: 'Error', description: 'Failed to send message. Please try again.', variant: 'destructive' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -96,8 +75,8 @@ ${message}`;
               disabled={loading}
               className="font-rajdhani font-semibold flex items-center gap-2 px-7 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow disabled:opacity-50"
             >
-              <Send className="w-4 h-4" />
-              Send Message
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
 
