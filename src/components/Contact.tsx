@@ -35,7 +35,7 @@ const Contact = () => {
       });
 
       if (res.status === 200) {
-        toast({ title: 'Message Sent!', description: 'We'll get back to you shortly.' });
+        toast({ title: 'Message Sent!', description: "We'll get back to you shortly." });
         form.reset();
       } else {
         throw new Error('Submission failed');
