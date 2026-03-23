@@ -75,8 +75,8 @@ const Contact = () => {
               disabled={loading}
               className="font-rajdhani font-semibold flex items-center gap-2 px-7 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow disabled:opacity-50"
             >
-              <Send className="w-4 h-4" />
-              Send Message
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
 
