@@ -1,5 +1,14 @@
 import { Link } from 'react-router-dom';
 
+const quickLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Products', to: '/products' },
+  { label: 'Markets', to: '/markets' },
+  { label: 'Contact', to: '/contact' },
+  { label: 'Careers', to: '/careers' },
+];
+
 const Footer = () => (
   <footer className="relative bg-card/80 border-t border-border py-12 noise-bg">
     <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -10,7 +19,8 @@ const Footer = () => (
             <span className="text-primary">MECHATRONICS</span> TECHNOLOGY
           </div>
           <p className="font-barlow text-sm text-muted-foreground leading-relaxed">
-            Precision Sensing & Measurement Solutions — India's trusted industrial sensor distributor.
+            Precision Sensing & Measurement Solutions — India's trusted industrial sensor
+            distributor.
           </p>
         </div>
 
@@ -18,21 +28,15 @@ const Footer = () => (
         <div>
           <h4 className="font-rajdhani font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Quick Links</h4>
           <div className="flex flex-col gap-2">
-            {['Home', 'About', 'Products', 'Markets', 'Contact'].map((link) => (
-              <a
-                key={link}
-                href={`/#${link.toLowerCase()}`}
+            {quickLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
                 className="font-barlow text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
-            <Link
-              to="/careers"
-              className="font-barlow text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Careers
-            </Link>
           </div>
         </div>
 

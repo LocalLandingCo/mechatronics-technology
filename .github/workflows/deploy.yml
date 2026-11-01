@@ -1,0 +1,78 @@
+name: Deploy to GitHub Pages
+
+# Zero-cost hosting: this builds the Vite SPA and publishes it with GitHub's
+# native Pages actions. For a public repo, Actions minutes and Pages hosting
+# are both free — no third-party host, no billing account required.
+#
+# Custom domain: GitHub Pages reads public/CNAME (copied into dist/ by Vite)
+# and automatically configures https://<that-domain>. Hitting the default
+# <owner>.github.io/<repo> URL then redirects to the custom domain. The DNS
+# records at the domain registrar still have to point at GitHub Pages — see
+# spec/tech-stack.md "Deployment" for the exact records.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deployment can run at a time; cancel superseded runs instead
+# of queuing them.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Add SPA fallback for direct/refresh loads
+        # GitHub Pages has no server-side rewrites. Serving index.html's
+        # content at 404.html means a hard refresh on /careers (or any other
+        # client-side route) still boots the app at the real URL instead of
+        # showing a dead end.
+        run: cp dist/index.html dist/404.html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

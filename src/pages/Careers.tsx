@@ -1,5 +1,5 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
+import Layout from '@/components/Layout';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Briefcase, Mail, MapPin, Phone } from 'lucide-react';
 
@@ -7,14 +7,12 @@ const Careers = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
+    <Layout>
       {/* Hero Banner */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 noise-bg dot-grid overflow-hidden">
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
           <nav className="font-barlow text-sm text-muted-foreground mb-6">
-            <a href="/" className="hover:text-primary transition-colors">Home</a>
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <span className="mx-2">/</span>
             <span className="text-foreground">Careers</span>
           </nav>
@@ -67,9 +65,7 @@ const Careers = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

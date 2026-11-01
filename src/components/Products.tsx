@@ -1,7 +1,20 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Gauge, Weight, RotateCcw, Package, ChevronRight, ChevronDown, ArrowRight, Shield, Tag, Boxes, Layers, X, ExternalLink } from 'lucide-react';
+import { Gauge, Package, ChevronRight, ChevronDown, ArrowRight, Layers, ExternalLink } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+
+/** Renders a hash anchor (same-page scroll) or a real route Link, depending on context. */
+const ContactLink = ({ href, className, onClick, children }: { href: string; className?: string; onClick?: () => void; children: React.ReactNode }) =>
+  href.startsWith('#') ? (
+    <a href={href} className={className} onClick={onClick}>
+      {children}
+    </a>
+  ) : (
+    <Link to={href} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
 
 type SubProduct = {
   title: string;
@@ -173,7 +186,17 @@ const catalogue: MainCategory[] = [
 
 const WHATSAPP_NUMBER = '918237813940';
 
-const Products = () => {
+interface ProductsProps {
+  /**
+   * Where the section's internal "Contact" links point. Defaults to the
+   * in-page anchor used when this section is stacked inline on the home
+   * page; the standalone `/products` page passes `/contact` instead, since
+   * there's no `#contact` section to scroll to there.
+   */
+  contactHref?: string;
+}
+
+const Products = ({ contactHref = '#contact' }: ProductsProps) => {
   const { ref, isVisible } = useScrollReveal();
   const [activeCategory, setActiveCategory] = useState<string>('transducers');
   const [expandedProduct, setExpandedProduct] = useState<string | null>(null);
@@ -398,13 +421,13 @@ const Products = () => {
 
         {/* CTA */}
         <div className={`mt-12 text-center ${isVisible ? 'animate-fade-up delay-600' : 'opacity-0'}`}>
-          <a
-            href="#contact"
+          <ContactLink
+            href={contactHref}
             className="inline-flex items-center gap-2 font-rajdhani font-semibold text-sm px-6 py-3 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all amber-glow"
           >
             Request Product Specifications
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </ContactLink>
         </div>
       </div>
 
@@ -458,13 +481,13 @@ const Products = () => {
                   >
                     Request Quote on WhatsApp
                   </button>
-                  <a
-                    href="#contact"
+                  <ContactLink
+                    href={contactHref}
                     onClick={() => setModalProduct(null)}
                     className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded border border-border text-foreground hover:border-primary/40 transition-colors"
                   >
                     Contact Us
-                  </a>
+                  </ContactLink>
                 </div>
               </div>
             </>
