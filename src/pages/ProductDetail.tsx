@@ -1,0 +1,176 @@
+import { useEffect } from 'react';
+import { Link, useParams, Navigate } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import { useSEO } from '@/hooks/useSEO';
+import { getProductBySlug, getRelatedProducts, getCategoryById } from '@/data/products';
+import { ArrowLeft, MessageCircle } from 'lucide-react';
+
+const WHATSAPP_NUMBER = '918237813940';
+
+const ProductDetail = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const product = slug ? getProductBySlug(slug) : undefined;
+
+  useSEO({
+    title: product
+      ? `${product.title} | Mechatronics Technology`
+      : 'Product Not Found | Mechatronics Technology',
+    description: product
+      ? `${product.description} Request pricing and availability from Mechatronics Technology, Kolhapur.`
+      : 'This product could not be found.',
+    path: `/products/${slug ?? ''}`,
+  });
+
+  useEffect(() => {
+    if (!product) return;
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.title,
+      description: product.description,
+      brand: { '@type': 'Brand', name: 'Mechatronics Technology' },
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'INR',
+        seller: { '@type': 'Organization', name: 'Mechatronics Technology' },
+      },
+    });
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [product]);
+
+  if (!product) {
+    return <Navigate to="/products" replace />;
+  }
+
+  const category = getCategoryById(product.categoryId);
+  const related = getRelatedProducts(product);
+
+  const requestQuote = () => {
+    const msg = `Hi, I'm interested in *${product.title}*. Please share pricing and availability details.`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+
+      <section className="pt-28 md:pt-36 pb-16 md:pb-24 noise-bg overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh pointer-events-none" />
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
+          <nav aria-label="Breadcrumb" className="font-barlow text-sm text-muted-foreground mb-8">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link to="/products" className="hover:text-primary transition-colors">Products</Link>
+            {category && (
+              <>
+                <span className="mx-2">/</span>
+                <Link to={`/products#${category.id}`} className="hover:text-primary transition-colors">{category.title}</Link>
+              </>
+            )}
+            <span className="mx-2">/</span>
+            <span className="text-foreground" aria-current="page">{product.title}</span>
+          </nav>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted border border-border flex items-center justify-center">
+              <img src={product.image} alt={product.title} className="w-full h-full object-contain p-6" />
+            </div>
+
+            <div>
+              <span className="font-barlow text-xs tracking-widest text-primary uppercase">{category?.title}</span>
+              <h1 className="font-rajdhani font-bold text-3xl md:text-4xl lg:text-5xl mt-3 mb-6 text-foreground">
+                {product.title}
+              </h1>
+              <p className="font-barlow text-muted-foreground leading-relaxed mb-8">{product.description}</p>
+
+              <h2 className="font-rajdhani font-semibold text-sm uppercase tracking-wider text-primary mb-3">
+                Technical Specifications
+              </h2>
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                {Object.entries(product.specs).map(([key, value]) => (
+                  <div key={key} className="bg-muted/50 rounded-lg p-3 border border-border/50">
+                    <span className="font-barlow text-[10px] uppercase tracking-wider text-muted-foreground block">
+                      {key}
+                    </span>
+                    <span className="font-rajdhani font-semibold text-sm text-foreground mt-1 block">{value}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={requestQuote}
+                  className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Request Quote on WhatsApp
+                </button>
+                <Link
+                  to="/contact"
+                  className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded border border-border text-foreground hover:border-primary/40 transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {related.length > 0 && (
+        <section className="py-16 md:py-20 border-t border-border">
+          <div className="container mx-auto px-4 md:px-8">
+            <h2 className="font-rajdhani font-bold text-2xl md:text-3xl text-foreground mb-8">
+              Related <span className="text-primary">Products</span>
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {related.map((rel) => (
+                <Link
+                  key={rel.slug}
+                  to={`/products/${rel.slug}`}
+                  className="group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300"
+                >
+                  <div className="aspect-[4/3] overflow-hidden bg-muted">
+                    <img
+                      src={rel.image}
+                      alt={rel.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-rajdhani font-bold text-base text-foreground group-hover:text-primary transition-colors">
+                      {rel.title}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="pb-16 md:pb-20">
+        <div className="container mx-auto px-4 md:px-8">
+          <Link to="/products" className="inline-flex items-center gap-2 font-barlow text-sm text-muted-foreground hover:text-primary transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            Back to full catalogue
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+};
+
+export default ProductDetail;

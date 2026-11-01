@@ -213,3 +213,32 @@
     radial-gradient(ellipse at 80% 20%, hsl(33 100% 50% / 0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 80%, hsl(195 100% 50% / 0.04) 0%, transparent 50%);
 }
+
+/* Respect reduced-motion preference: stop decorative/looping animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit,
+  .animate-orbit-reverse,
+  .animate-pulse-glow,
+  .animate-float,
+  .animate-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus ring across interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}

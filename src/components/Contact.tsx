@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined;
 
 const Contact = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -15,11 +15,21 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!WEB3FORMS_ACCESS_KEY) {
+      toast({
+        title: 'Form not configured',
+        description: 'Please call or WhatsApp us directly — the online form is being set up.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
 
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
+      subject: 'New enquiry from mechtec.in',
       name: formData.get('name') as string,
       email: formData.get('email') as string,
       phone: (formData.get('phone') as string) || 'Not provided',

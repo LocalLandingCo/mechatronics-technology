@@ -1,29 +1,26 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import PageHero from '@/components/PageHero';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useSEO } from '@/hooks/useSEO';
 import { Briefcase, Mail, MapPin, Phone } from 'lucide-react';
 
 const Careers = () => {
   const { ref, isVisible } = useScrollReveal();
 
+  useSEO({
+    title: 'Careers | Mechatronics Technology',
+    description:
+      'Join Mechatronics Technology, a Kolhapur-based industrial sensor distributor. We welcome motivated, energetic professionals with a passion for engineering.',
+    path: '/careers',
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Banner */}
-      <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 noise-bg dot-grid overflow-hidden">
-        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
-          <nav className="font-barlow text-sm text-muted-foreground mb-6">
-            <a href="/" className="hover:text-primary transition-colors">Home</a>
-            <span className="mx-2">/</span>
-            <span className="text-foreground">Careers</span>
-          </nav>
-          <h1 className="font-rajdhani font-bold text-4xl md:text-5xl lg:text-6xl text-foreground">
-            CAREERS
-          </h1>
-          <div className="w-16 h-1 bg-primary mx-auto mt-4" />
-        </div>
-      </section>
+      <PageHero title="CAREERS" crumbs={[{ label: 'Home', href: '/' }, { label: 'Careers' }]} />
 
       {/* Content */}
       <section className="py-20 md:py-28" ref={ref}>
@@ -69,6 +66,7 @@ const Careers = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

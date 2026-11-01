@@ -1,9 +1,9 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { MapPin, Globe, BarChart3 } from 'lucide-react';
+import { MapPin, Calendar, BarChart3 } from 'lucide-react';
 
 const stats = [
-  { icon: BarChart3, value: '7+', label: 'Market Sectors Served' },
-  { icon: Globe, value: '10+', label: 'Global Principals' },
+  { icon: Calendar, value: 'Since 2018', label: 'Precision Sensing Partner' },
+  { icon: BarChart3, value: '6', label: 'Industry Sectors Served' },
   { icon: MapPin, value: 'Kolhapur', label: 'Maharashtra, India' },
 ];
 
