@@ -1,4 +1,13 @@
 import { Gauge, Package, type LucideIcon } from 'lucide-react';
+import rotaryTorqueSensorImg from '@/assets/products/rotary-torque-sensor.jpg';
+import reactionTorqueSensorImg from '@/assets/products/reaction-torque-sensor.jpg';
+import sTypeLoadCellImg from '@/assets/products/s-type-load-cell.jpg';
+import singlePointLoadCellImg from '@/assets/products/single-point-load-cell.jpg';
+import inclinometerSensorImg from '@/assets/products/inclinometer-sensor.jpg';
+import tiltIndicatorImg from '@/assets/products/tilt-indicator.jpg';
+import impactIndicatorImg from '@/assets/products/impact-indicator.jpg';
+import clipLabelImg from '@/assets/products/clip-label.jpg';
+import palletCushionImg from '@/assets/products/pallet-cushion.jpg';
 
 export type Product = {
   slug: string;
@@ -30,7 +39,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'rotary-torque-sensor',
         title: 'Dynamic / Rotary Torque Sensor',
-        image: '/images/products/rotary-torque-sensor.jpg',
+        image: rotaryTorqueSensorImg,
         description:
           'Compact type torque sensor suitable for various kinds of torque measuring occasions with small volume and high speed. Ideal for motor testing, pump testing, and rotating machinery. Also used for gearbox testing.',
         specs: {
@@ -45,7 +54,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'reaction-torque-sensor',
         title: 'Reaction / Non-Rotary Torque Sensor',
-        image: '/images/products/reaction-torque-sensor.jpg',
+        image: reactionTorqueSensorImg,
         description:
           'Reaction torque sensor for measurement of torque on stationary objects or within a certain angle rotation. Developed on strain bridge technology. Also used for assembly tools, valve actuators, and screwdriver testing rigs.',
         specs: {
@@ -59,7 +68,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 's-type-load-cell',
         title: 'S-Type Load Cell',
-        image: '/images/products/s-type-load-cell.jpg',
+        image: sTypeLoadCellImg,
         description:
           'Versatile S-beam load cell for tension and compression force measurement. Widely used in hopper, tank, and platform scales.',
         specs: {
@@ -73,7 +82,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'single-point-load-cell',
         title: 'Single Point Load Cell',
-        image: '/images/products/single-point-load-cell.jpg',
+        image: singlePointLoadCellImg,
         description:
           'Aluminium load cell designed for platform and bench scales. Provides accurate readings regardless of load position on the platform.',
         specs: {
@@ -87,7 +96,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'inclinometer-sensor',
         title: 'Inclinometer Sensor',
-        image: '/images/products/inclinometer-sensor.jpg',
+        image: inclinometerSensorImg,
         description:
           'High-precision inclinometer measuring orientation angle with respect to gravity. Used in solar tracking, crane monitoring, military, and structural applications.',
         specs: {
@@ -111,7 +120,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'tilt-indicator',
         title: 'Tilt Indicator',
-        image: '/images/products/tilt-indicator.jpg',
+        image: tiltIndicatorImg,
         description:
           'Self-adhesive shipping label that monitors unacceptable tilting on items in transit. When tilt occurs, the display window activates and changes from silver to red, providing tamper evidence of mishandling for transit insurance claims.',
         specs: {
@@ -125,7 +134,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'impact-indicator',
         title: 'Impact Indicator',
-        image: '/images/products/impact-indicator.jpg',
+        image: impactIndicatorImg,
         description:
           'Detects and tracks impact events during transit and storage. When goods are dropped or impacted, the indicator window immediately turns red, indicating potential damage.',
         specs: {
@@ -139,7 +148,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'clip-label',
         title: 'Clip Label',
-        image: '/images/products/clip-label.jpg',
+        image: clipLabelImg,
         description:
           'Specifically designed for smaller packages with limited adhesive surfaces. Insert on product surfaces or interior to indicate transport conditions and serve as evidence for compensation.',
         specs: {
@@ -153,7 +162,7 @@ export const catalogue: ProductCategory[] = [
       {
         slug: 'pallet-cushion',
         title: 'Pallet Cushion',
-        image: '/images/products/pallet-cushion.jpg',
+        image: palletCushionImg,
         description:
           'Air-dampened cushions for reducing vibration and shock during transportation. Designed to mount directly on pallet bases, crates, and wooden cases. Reusable and easy to install.',
         specs: {

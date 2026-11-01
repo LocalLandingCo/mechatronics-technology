@@ -12,6 +12,8 @@ import ContactPage from "./pages/ContactPage";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +35,8 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ScrollToTopButton />
+        <WhatsAppButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

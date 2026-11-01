@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { catalogue } from '@/data/products';
+import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 
 const WHATSAPP_NUMBER = '918237813940';
 
@@ -108,6 +109,7 @@ const Products = () => {
                     onClick={() => requestQuote(product.title)}
                     className="font-rajdhani font-semibold text-xs flex items-center gap-1.5 px-4 py-2 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all"
                   >
+                    <WhatsAppIcon className="w-3.5 h-3.5" />
                     Request Quote
                   </button>
                 </div>

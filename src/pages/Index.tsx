@@ -5,7 +5,6 @@ import Products from '@/components/Products';
 import Markets from '@/components/Markets';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
 import { useSEO } from '@/hooks/useSEO';
 
 const Index = () => {
@@ -25,7 +24,6 @@ const Index = () => {
       <Markets />
       <Contact />
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

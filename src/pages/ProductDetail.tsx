@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
 import { useSEO } from '@/hooks/useSEO';
 import { getProductBySlug, getRelatedProducts, getCategoryById } from '@/data/products';
-import { ArrowLeft, MessageCircle } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 
 const WHATSAPP_NUMBER = '918237813940';
 
@@ -110,7 +110,7 @@ const ProductDetail = () => {
                   onClick={requestQuote}
                   className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4" />
                   Request Quote on WhatsApp
                 </button>
                 <Link
@@ -168,7 +168,6 @@ const ProductDetail = () => {
       </section>
 
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

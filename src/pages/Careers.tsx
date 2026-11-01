@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
 import PageHero from '@/components/PageHero';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useSEO } from '@/hooks/useSEO';
@@ -66,7 +65,6 @@ const Careers = () => {
       </section>
 
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

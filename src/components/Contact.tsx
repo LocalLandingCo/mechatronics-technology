@@ -4,8 +4,11 @@ import { Phone, MapPin, Mail, Send, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined;
+const WHATSAPP_NUMBER = '918237813940';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello, I would like to know more about your products.')}`;
 
 const Contact = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -99,6 +102,21 @@ const Contact = () => {
               </p>
 
               <div className="space-y-4 pt-2">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group"
+                >
+                  <div className="w-9 h-9 rounded bg-[#25D366]/10 flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors">
+                    <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                  </div>
+                  <div>
+                    <div className="font-barlow text-sm text-foreground">+91 82378 13940</div>
+                    <div className="font-barlow text-xs text-muted-foreground">Chat on WhatsApp</div>
+                  </div>
+                </a>
+
                 <a href="tel:+918237813940" className="flex items-center gap-3 group">
                   <div className="w-9 h-9 rounded bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Phone className="w-4 h-4 text-primary" />
@@ -119,15 +137,15 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded bg-primary/10 flex items-center justify-center">
+                <a href="mailto:info@mechtec.in" className="flex items-center gap-3 group">
+                  <div className="w-9 h-9 rounded bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Mail className="w-4 h-4 text-primary" />
                   </div>
                   <div>
                     <div className="font-barlow text-sm text-foreground">info@mechtec.in</div>
                     <div className="font-barlow text-xs text-muted-foreground">Email us</div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

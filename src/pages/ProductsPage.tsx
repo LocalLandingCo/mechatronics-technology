@@ -1,11 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
 import PageHero from '@/components/PageHero';
 import { useSEO } from '@/hooks/useSEO';
 import { catalogue } from '@/data/products';
 import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
+import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 
 const WHATSAPP_NUMBER = '918237813940';
 
@@ -81,6 +81,7 @@ const ProductsPage = () => {
                             onClick={() => requestQuote(product.title)}
                             className="font-rajdhani font-semibold text-xs flex items-center gap-1.5 px-4 py-2 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all"
                           >
+                            <WhatsAppIcon className="w-3.5 h-3.5" />
                             Request Quote
                           </button>
                         </div>
@@ -95,7 +96,6 @@ const ProductsPage = () => {
       </section>
 
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

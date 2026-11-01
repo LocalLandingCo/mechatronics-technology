@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
 import PageHero from '@/components/PageHero';
 import About from '@/components/About';
 import { useSEO } from '@/hooks/useSEO';
@@ -23,7 +22,6 @@ const AboutPage = () => {
       />
       <About />
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };
