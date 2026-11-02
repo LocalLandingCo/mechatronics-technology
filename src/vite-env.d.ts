@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/// <reference types="vite/client" />
-=======
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
@@ -10,4 +7,3 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
->>>>>>> claude/mechatronics-tech-website-3a370a
