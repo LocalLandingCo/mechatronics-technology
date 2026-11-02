@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 User-agent: Googlebot
 Allow: /
 
@@ -12,3 +13,21 @@ Allow: /
 
 User-agent: *
 Allow: /
+=======
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.mechtec.in/sitemap.xml
+>>>>>>> claude/mechatronics-tech-website-3a370a
