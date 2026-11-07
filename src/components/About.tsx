@@ -1,5 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { CheckCircle2 } from 'lucide-react';
+import LogoMark from '@/components/LogoMark';
 
 const differentiators = [
   'Uncompromising Quality Standards',
@@ -26,7 +27,7 @@ const About = () => {
             </div>
             <div className="absolute w-[180px] h-[180px] md:w-[220px] md:h-[220px] border border-primary/10 rounded-lg rotate-[30deg] animate-orbit" style={{ animationDuration: '30s' }} />
             <div className="relative text-center -rotate-0">
-              <div className="font-rajdhani font-bold text-5xl md:text-6xl text-primary text-glow-cyan">MT</div>
+              <LogoMark className="mx-auto h-20 w-20 md:h-28 md:w-28 text-primary drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]" />
               <div className="font-barlow text-xs text-muted-foreground tracking-widest mt-1">SINCE 2018</div>
             </div>
           </div>

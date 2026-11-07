@@ -23,11 +23,11 @@ const Markets = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {sectors.map((sector, i) => (
             <div
               key={sector.title}
-              className={`group bg-card/30 backdrop-blur border border-border rounded-lg p-6 hover:border-primary/40 hover:bg-card/60 transition-all duration-300 ${
+              className={`glow-card group bg-card/30 backdrop-blur border border-border rounded-lg p-6 hover:border-primary/40 hover:bg-card/60 transition-all duration-300 ${
                 isVisible ? `animate-fade-up delay-${(i + 1) * 100}` : 'opacity-0'
               }`}
             >

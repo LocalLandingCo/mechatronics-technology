@@ -1,10 +1,11 @@
+import { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Products from '@/components/Products';
-import Markets from '@/components/Markets';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+const About = lazy(() => import('@/components/About'));
+const Products = lazy(() => import('@/components/Products'));
+const Markets = lazy(() => import('@/components/Markets'));
+const Contact = lazy(() => import('@/components/Contact'));
+const Footer = lazy(() => import('@/components/Footer'));
 import { useSEO } from '@/hooks/useSEO';
 
 const Index = () => {
@@ -19,11 +20,13 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
+      <Suspense fallback={null}>
       <About />
       <Products />
       <Markets />
       <Contact />
       <Footer />
+      </Suspense>
     </div>
   );
 };

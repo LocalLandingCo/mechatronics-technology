@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import LogoMark from './LogoMark';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -33,9 +34,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link to="/" className="font-rajdhani font-bold text-lg md:text-xl tracking-wider text-foreground shrink-0 mr-12">
-          <span className="text-primary">MECHATRONICS</span>{' '}
-          <span className="hidden sm:inline">TECHNOLOGY</span>
+        <Link to="/" className="flex items-center gap-3 font-rajdhani font-bold text-lg md:text-xl tracking-wider text-foreground shrink-0 mr-12">
+          <LogoMark className="h-9 w-9 md:h-11 md:w-11 text-primary" />
+          <span>
+            <span className="text-primary">MECHATRONICS</span>{' '}
+            <span className="hidden sm:inline">TECHNOLOGY</span>
+          </span>
         </Link>
 
         {/* Desktop links */}
