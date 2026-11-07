@@ -29,8 +29,8 @@ const PageHero = ({ title, subtitle, crumbs }: PageHeroProps) => (
           </Fragment>
         ))}
       </nav>
-      <h1 className="font-rajdhani font-bold text-4xl md:text-5xl lg:text-6xl text-foreground">{title}</h1>
-      <div className="w-16 h-1 bg-primary mx-auto mt-4" />
+      <h1 className="font-rajdhani font-bold text-4xl md:text-5xl lg:text-6xl text-foreground tracking-tight animate-fade-up">{title}</h1>
+      <div className="w-16 h-1 bg-primary mx-auto mt-4 title-underline" />
       {subtitle && (
         <p className="font-barlow text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
       )}

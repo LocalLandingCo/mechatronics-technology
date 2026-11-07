@@ -60,6 +60,7 @@ const ProductsPage = () => {
                           alt={product.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           loading="lazy"
+ decoding="async" width={1024} height={1024}
                         />
                       </Link>
                       <div className="p-5 flex flex-col flex-1">

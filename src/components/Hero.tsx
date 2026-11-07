@@ -11,7 +11,8 @@ const Hero = () => {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden noise-bg dot-grid" ref={ref}>
+    <section id="home" className="relative min-h-[100svh] flex items-center overflow-hidden noise-bg dot-grid" ref={ref} data-spot>
+      <div className="absolute inset-0 pointer-spot pointer-events-none hidden md:block" />
       {/* Gradient mesh */}
       <div className="absolute inset-0 gradient-mesh pointer-events-none" />
 
@@ -24,10 +25,10 @@ const Hero = () => {
                 Industrial Sensing Solutions
               </span>
             </div>
-            <h1 className="font-rajdhani font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6">
-              Precision Sensing &{' '}
-              <span className="text-primary text-glow-cyan">Measurement</span>{' '}
-              Solutions
+            <h1 className="font-rajdhani font-bold text-[2.6rem] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.02] tracking-tight mb-6">
+              <span className="headline-line"><span>Precision Sensing</span></span>
+              <span className="headline-line"><span className="text-sweep">&amp; Measurement</span></span>
+              <span className="headline-line"><span>Solutions</span></span>
             </h1>
             <p className="font-barlow text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
               India's trusted distributor for industrial sensors, load cells, and measurement instruments — serving defense, automotive, R&D, and automation sectors.
@@ -35,7 +36,7 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#products"
-                className="font-rajdhani font-semibold px-7 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow"
+                className="font-rajdhani font-semibold px-7 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow btn-shine active:scale-95"
               >
                 Explore Products
               </a>
@@ -76,7 +77,7 @@ const Hero = () => {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-card/50 backdrop-blur border border-border rounded-lg p-5 flex items-center gap-4 hover:border-primary/40 transition-colors animate-float"
+              className="glow-card bg-card/50 backdrop-blur border border-border rounded-lg p-5 flex items-center gap-4 hover:border-primary/40 transition-colors animate-float"
             >
               <div className="w-10 h-10 rounded bg-primary/10 flex items-center justify-center">
                 <stat.icon className="w-5 h-5 text-primary" />

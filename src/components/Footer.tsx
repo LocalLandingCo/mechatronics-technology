@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import LogoMark from '@/components/LogoMark';
 
 const Footer = () => (
   <footer className="relative bg-card/80 border-t border-border py-12 noise-bg">
@@ -6,8 +7,9 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8">
         {/* Brand */}
         <div>
-          <div className="font-rajdhani font-bold text-lg text-foreground mb-2">
-            <span className="text-primary">MECHATRONICS</span> TECHNOLOGY
+          <div className="flex items-center gap-2 font-rajdhani font-bold text-lg text-foreground mb-2">
+            <LogoMark className="h-8 w-8 text-primary" />
+            <span><span className="text-primary">MECHATRONICS</span> TECHNOLOGY</span>
           </div>
           <p className="font-barlow text-sm text-muted-foreground leading-relaxed">
             Precision Sensing & Measurement Solutions — India's trusted industrial sensor distributor.

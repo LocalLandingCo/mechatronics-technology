@@ -82,7 +82,7 @@ const Products = () => {
           {activeCat.products.map((product) => (
             <div
               key={product.slug}
-              className="group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300 flex flex-col"
+              className="glow-card group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300 flex flex-col"
             >
               <Link to={`/products/${product.slug}`} className="block aspect-[4/3] overflow-hidden bg-muted">
                 <img
@@ -90,6 +90,7 @@ const Products = () => {
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
+ decoding="async" width={1024} height={1024}
                 />
               </Link>
               <div className="p-5 flex flex-col flex-1">
