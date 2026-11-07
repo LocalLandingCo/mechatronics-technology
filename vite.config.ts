@@ -5,6 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Relative asset URLs; index.html sets <base> at runtime so the same build
+  // works on the custom domain (/) and on <owner>.github.io/<repo>/.
+  base: "./",
   server: {
     host: "::",
     port: 8080,

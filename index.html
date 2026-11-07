@@ -2,6 +2,18 @@
 <html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Runtime base path: "/" on a custom domain, "/<repo>/" on github.io project pages.
+      (function () {
+        var b = '/';
+        if (/\.github\.io$/.test(location.hostname)) {
+          var seg = location.pathname.split('/')[1];
+          if (seg) b = '/' + seg + '/';
+        }
+        window.__APP_BASE__ = b;
+        document.write('<base href="' + b + '">');
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0f18" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
