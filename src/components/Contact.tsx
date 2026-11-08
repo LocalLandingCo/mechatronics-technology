@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Phone, MapPin, Mail, Send, Loader2, ExternalLink } from 'lucide-react';
 import { INDIAMART_URL, GST_NUMBER } from '@/data/company';
 import { Input } from '@/components/ui/input';
@@ -14,10 +13,9 @@ const WHATSAPP_NUMBER = '918237813940';
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello, I would like to know more about your products.')}`;
 
 const labelClass = 'font-barlow text-sm text-foreground';
-const fieldClass = 'bg-card/50 border-border font-barlow';
+const fieldClass = 'bg-card border-border font-barlow';
 
 const Contact = () => {
-  const { ref, isVisible } = useScrollReveal();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -72,13 +70,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-14 md:py-20 noise-bg overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 gradient-mesh pointer-events-none" />
+    <section id="contact" className="relative py-14 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
-          <span className="font-barlow text-xs tracking-widest text-primary uppercase">Get In Touch</span>
-          <h2 className="font-rajdhani font-bold text-3xl md:text-4xl lg:text-5xl mt-3 text-foreground">
-            Request a <span className="text-primary">Quote</span>
+        <div className="mb-8 md:mb-10">
+          <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-foreground">
+            Get a quote
           </h2>
         </div>
 
@@ -86,7 +82,7 @@ const Contact = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className={`space-y-5 ${isVisible ? 'animate-fade-up delay-200' : 'opacity-0'}`}
+            className="space-y-5"
           >
             <div className="grid sm:grid-cols-2 gap-5">
               <div className="space-y-2">
@@ -145,17 +141,17 @@ const Contact = () => {
             <button
               type="submit"
               disabled={loading}
-              className="font-rajdhani font-semibold flex items-center gap-2 px-7 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow disabled:opacity-50"
+              className="font-display font-semibold flex items-center gap-2 px-7 py-3 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-              {loading ? 'Sending...' : 'Request Quote'}
+              {loading ? 'Sending...' : 'Get a quote'}
             </button>
           </form>
 
           {/* Info */}
-          <div className={`space-y-6 ${isVisible ? 'animate-fade-up delay-400' : 'opacity-0'}`}>
-            <div className="bg-card/50 backdrop-blur border border-border rounded-lg p-6 space-y-5">
-              <h3 className="font-rajdhani font-bold text-xl text-foreground">Mechatronics Technology</h3>
+          <div className="space-y-6">
+            <div className="bg-card border border-border rounded-lg p-6 space-y-5">
+              <h3 className="font-display font-bold text-xl text-foreground">Mechatronics Technology</h3>
               <p className="font-barlow text-sm text-muted-foreground">
                 Wholesale distributor & trader of precision sensing and measurement instruments for Indian industry.
               </p>

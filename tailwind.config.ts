@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        rajdhani: ["Rajdhani", "sans-serif"],
+        display: ["Archivo", "sans-serif"],
         barlow: ["Barlow", "sans-serif"],
       },
       colors: {
@@ -63,8 +63,6 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         surface: "hsl(var(--surface))",
-        "cyan-glow": "hsl(var(--cyan-glow))",
-        "amber-glow": "hsl(var(--amber-glow))",
       },
       borderRadius: {
         lg: "var(--radius)",

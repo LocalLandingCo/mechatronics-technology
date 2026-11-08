@@ -16,7 +16,7 @@ const ReviewsPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <PageHero
-        title="BUYER REVIEWS"
+        title="Buyer reviews"
         subtitle="Ratings and reviews left by our buyers on IndiaMART."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Reviews' }]}
       />

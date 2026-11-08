@@ -62,8 +62,7 @@ const ProductDetail = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="pt-28 md:pt-36 pb-16 md:pb-24 noise-bg overflow-hidden">
-        <div className="absolute inset-0 gradient-mesh pointer-events-none" />
+      <section className="pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <nav aria-label="Breadcrumb" className="font-barlow text-sm text-muted-foreground mb-8">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
@@ -72,7 +71,7 @@ const ProductDetail = () => {
             {category && (
               <>
                 <span className="mx-2">/</span>
-                <Link to={`/products#${category.id}`} className="hover:text-primary transition-colors">{category.title}</Link>
+                <Link to="/products" className="hover:text-primary transition-colors">{category.title}</Link>
               </>
             )}
             <span className="mx-2">/</span>
@@ -85,8 +84,7 @@ const ProductDetail = () => {
             </div>
 
             <div>
-              <span className="font-barlow text-xs tracking-widest text-primary uppercase">{category?.title}</span>
-              <h1 className="font-rajdhani font-bold text-3xl md:text-4xl lg:text-5xl mt-3 mb-6 text-foreground">
+              <h1 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl mt-3 mb-6 text-foreground">
                 {product.title}
               </h1>
               <p className="font-barlow text-muted-foreground leading-relaxed mb-6">{product.description}</p>
@@ -94,27 +92,27 @@ const ProductDetail = () => {
               {product.minOrder && (
                 <div className="mb-8">
                   <span className="font-barlow text-sm text-muted-foreground block">Minimum order</span>
-                  <span className="font-rajdhani font-bold text-2xl text-foreground">{product.minOrder}</span>
+                  <span className="font-display font-bold text-2xl text-foreground">{product.minOrder}</span>
                 </div>
               )}
 
-              <h2 className="font-rajdhani font-semibold text-sm uppercase tracking-wider text-primary mb-3">
+              <h2 className="font-display font-semibold text-sm text-primary mb-3">
                 Technical Specifications
               </h2>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {Object.entries(product.specs).map(([key, value]) => (
                   <div key={key} className="bg-muted/50 rounded-lg p-3 border border-border/50">
-                    <span className="font-barlow text-[10px] uppercase tracking-wider text-muted-foreground block">
+                    <span className="font-barlow text-[10px] text-muted-foreground block">
                       {key}
                     </span>
-                    <span className="font-rajdhani font-semibold text-sm text-foreground mt-1 block">{value}</span>
+                    <span className="font-display font-semibold text-sm text-foreground mt-1 block">{value}</span>
                   </div>
                 ))}
               </div>
 
               {product.applications && (
                 <>
-                  <h2 className="font-rajdhani font-semibold text-sm uppercase tracking-wider text-primary mb-3">
+                  <h2 className="font-display font-semibold text-sm text-primary mb-3">
                     Applications
                   </h2>
                   <ul className="font-barlow text-sm text-muted-foreground list-disc pl-5 space-y-1.5 mb-8">
@@ -126,14 +124,14 @@ const ProductDetail = () => {
               <div className="flex flex-wrap gap-3">
                 <button
                   onClick={requestQuote}
-                  className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow"
+                  className="font-display font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
-                  Request Quote on WhatsApp
+                  Get a quote on WhatsApp
                 </button>
                 <Link
                   to="/contact"
-                  className="font-rajdhani font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded border border-border text-foreground hover:border-primary/40 transition-colors"
+                  className="font-display font-semibold text-sm flex items-center gap-2 px-6 py-3 rounded border border-border text-foreground hover:border-primary/40 transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -146,15 +144,15 @@ const ProductDetail = () => {
       {related.length > 0 && (
         <section className="py-16 md:py-20 border-t border-border">
           <div className="container mx-auto px-4 md:px-8">
-            <h2 className="font-rajdhani font-bold text-2xl md:text-3xl text-foreground mb-8">
-              Related <span className="text-primary">Products</span>
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-8">
+              Related Products
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {related.map((rel) => (
                 <Link
                   key={rel.slug}
                   to={`/products/${rel.slug}`}
-                  className="glow-card group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300"
+                  className="glow-card group border border-border rounded-lg overflow-hidden bg-card hover:border-primary/40 transition-all duration-300"
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-muted">
                     <img
@@ -166,7 +164,7 @@ const ProductDetail = () => {
                     />
                   </div>
                   <div className="p-5">
-                    <h3 className="font-rajdhani font-bold text-base text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="font-display font-bold text-base text-foreground group-hover:text-primary transition-colors">
                       {rel.title}
                     </h3>
                   </div>

@@ -40,7 +40,7 @@ export const catalogue: ProductCategory[] = [
     title: 'Transducers & Sensors',
     tagline: 'Precision Measurement Instruments',
     description:
-      'High-accuracy sensing solutions for industrial, automotive, defense, and R&D applications. Global-standard transducers distributed with expert technical support.',
+      'High-accuracy sensing solutions for industrial, automotive, defence, and R&D applications. Global-standard transducers distributed with expert technical support.',
     products: [
       {
         slug: 'inclinometer-sensor',

@@ -96,16 +96,16 @@ const HeroCarousel = () => {
                 />
               </div>
               <div className="p-4 border-t border-border">
-                <p className="font-rajdhani font-bold text-base sm:text-lg text-foreground truncate">{product.title}</p>
+                <p className="font-display font-bold text-base sm:text-lg text-foreground truncate">{product.title}</p>
                 <dl className="grid grid-cols-2 gap-3 mt-2">
                   {specs.map(([key, value]) => (
                     <div key={key} className="min-w-0">
                       <dt className="font-barlow text-xs text-muted-foreground truncate">{key}</dt>
-                      <dd className="font-rajdhani font-semibold text-sm text-foreground truncate">{value}</dd>
+                      <dd className="font-display font-semibold text-sm text-foreground truncate">{value}</dd>
                     </div>
                   ))}
                 </dl>
-                <span className="font-rajdhani font-semibold text-sm text-primary inline-flex items-center gap-1 mt-2">
+                <span className="font-display font-semibold text-sm text-primary inline-flex items-center gap-1 mt-2">
                   View specs
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </span>
