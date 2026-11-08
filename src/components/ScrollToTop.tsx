@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { resetScroll } from '@/lib/smoothScroll';
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (hash) return;
-    window.scrollTo(0, 0);
+    resetScroll();
   }, [pathname, hash]);
 
   return null;

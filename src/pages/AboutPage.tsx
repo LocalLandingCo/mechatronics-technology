@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import About from '@/components/About';
+import CompanyFacts from '@/components/CompanyFacts';
 import { useSEO } from '@/hooks/useSEO';
 
 const AboutPage = () => {
@@ -21,6 +22,7 @@ const AboutPage = () => {
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
       <About />
+      <CompanyFacts />
       <Footer />
     </div>
   );

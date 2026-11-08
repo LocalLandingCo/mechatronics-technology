@@ -80,7 +80,7 @@ const ProductDetail = () => {
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted border border-border flex items-center justify-center">
+            <div className="aspect-[4/3] rounded-lg overflow-hidden bg-white border border-border flex items-center justify-center">
               <img src={product.image} alt={product.title} className="w-full h-full object-contain p-6" decoding="async" width={1024} height={1024} {...{ fetchpriority: 'high' }} />
             </div>
 
@@ -89,7 +89,14 @@ const ProductDetail = () => {
               <h1 className="font-rajdhani font-bold text-3xl md:text-4xl lg:text-5xl mt-3 mb-6 text-foreground">
                 {product.title}
               </h1>
-              <p className="font-barlow text-muted-foreground leading-relaxed mb-8">{product.description}</p>
+              <p className="font-barlow text-muted-foreground leading-relaxed mb-6">{product.description}</p>
+
+              {product.minOrder && (
+                <div className="mb-8">
+                  <span className="font-barlow text-sm text-muted-foreground block">Minimum order</span>
+                  <span className="font-rajdhani font-bold text-2xl text-foreground">{product.minOrder}</span>
+                </div>
+              )}
 
               <h2 className="font-rajdhani font-semibold text-sm uppercase tracking-wider text-primary mb-3">
                 Technical Specifications
@@ -104,6 +111,17 @@ const ProductDetail = () => {
                   </div>
                 ))}
               </div>
+
+              {product.applications && (
+                <>
+                  <h2 className="font-rajdhani font-semibold text-sm uppercase tracking-wider text-primary mb-3">
+                    Applications
+                  </h2>
+                  <ul className="font-barlow text-sm text-muted-foreground list-disc pl-5 space-y-1.5 mb-8">
+                    {product.applications.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                </>
+              )}
 
               <div className="flex flex-wrap gap-3">
                 <button
@@ -136,13 +154,13 @@ const ProductDetail = () => {
                 <Link
                   key={rel.slug}
                   to={`/products/${rel.slug}`}
-                  className="group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300"
+                  className="glow-card group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300"
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-muted">
                     <img
                       src={rel.image}
                       alt={rel.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain bg-white p-2 group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
  decoding="async" width={1024} height={1024}
                     />
