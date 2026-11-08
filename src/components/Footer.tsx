@@ -5,12 +5,12 @@ import { allProducts } from '@/data/products';
 import { GST_NUMBER, INDIAMART_URL } from '@/data/company';
 
 const Footer = () => (
-  <footer className="relative bg-card/80 border-t border-border py-12 noise-bg">
+  <footer className="band-dark blueprint relative py-12">
     <div className="container mx-auto px-4 md:px-8 relative z-10">
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2 font-rajdhani font-bold text-lg text-foreground mb-2">
+          <div className="flex items-center gap-2 font-display font-bold text-lg text-foreground mb-2">
             <LogoMark className="h-8 w-8 text-primary" />
             <span><span className="text-primary">MECHATRONICS</span> TECHNOLOGY</span>
           </div>
@@ -21,7 +21,7 @@ const Footer = () => (
 
         {/* Links */}
         <div>
-          <h4 className="font-rajdhani font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Quick Links</h4>
+          <h4 className="font-display font-semibold text-base text-foreground mb-3">Quick Links</h4>
           <div className="flex flex-col gap-2">
             {[
               { label: 'Home', href: '/' },
@@ -44,7 +44,7 @@ const Footer = () => (
 
         {/* Products */}
         <div>
-          <h4 className="font-rajdhani font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Products</h4>
+          <h4 className="font-display font-semibold text-base text-foreground mb-3">Products</h4>
           <div className="flex flex-col gap-2">
             {allProducts.slice(0, 5).map((product) => (
               <Link
@@ -61,7 +61,7 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h4 className="font-rajdhani font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Contact</h4>
+          <h4 className="font-display font-semibold text-base text-foreground mb-3">Contact</h4>
           <div className="font-barlow text-sm text-muted-foreground space-y-1">
             <p><a href="tel:+918237813940" className="hover:text-primary transition-colors">+91 82378 13940</a></p>
             <p>Kolhapur, Maharashtra, India</p>
@@ -81,8 +81,9 @@ const Footer = () => (
           © {new Date().getFullYear()} Mechatronics Technology. All rights reserved.
         </p>
         <p className="font-barlow text-xs text-muted-foreground mt-2 inline-flex items-center gap-1">
-          Site created with love
-          <Heart className="w-3 h-3 text-secondary fill-secondary" aria-hidden="true" />
+          Made with
+          <Heart className="w-3 h-3 text-red-500 fill-red-500" aria-hidden="true" />
+          <span className="sr-only">love</span>
           by LocalLandingCo
         </p>
       </div>

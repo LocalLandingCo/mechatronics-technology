@@ -17,7 +17,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <PageHero
-        title="ABOUT US"
+        title="About us"
         subtitle="A Kolhapur-based wholesale distributor and trader of high-performance sensing and measurement instruments, serving Indian industry since 2018."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />

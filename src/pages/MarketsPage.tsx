@@ -8,7 +8,7 @@ const MarketsPage = () => {
   useSEO({
     title: 'Markets We Serve | Mechatronics Technology',
     description:
-      'Mechatronics Technology supplies precision sensors and protective packaging to Defense, Automotive, R&D, Industrial Automation, Consumer Electronics, and Engineering sectors across India.',
+      'Mechatronics Technology supplies precision sensors and protective packaging to Defence, Automotive, R&D, Industrial Automation, Consumer Electronics, and Engineering sectors across India.',
     path: '/markets',
   });
 
@@ -16,7 +16,7 @@ const MarketsPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <PageHero
-        title="MARKETS WE SERVE"
+        title="Markets we serve"
         subtitle="Precision sensing and transit-protection solutions trusted across six core Indian industry sectors."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Markets' }]}
       />

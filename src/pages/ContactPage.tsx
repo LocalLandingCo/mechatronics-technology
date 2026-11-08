@@ -16,7 +16,7 @@ const ContactPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <PageHero
-        title="CONTACT US"
+        title="Contact us"
         subtitle="Share your application details for a technical consultation and quote — we typically respond within one business day."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />
