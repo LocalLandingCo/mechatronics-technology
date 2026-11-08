@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import LogoMark from '@/components/LogoMark';
+import { Heart } from 'lucide-react';
 import { allProducts } from '@/data/products';
+import { GST_NUMBER, INDIAMART_URL } from '@/data/company';
 
 const Footer = () => (
   <footer className="relative bg-card/80 border-t border-border py-12 noise-bg">
@@ -64,6 +66,12 @@ const Footer = () => (
             <p><a href="tel:+918237813940" className="hover:text-primary transition-colors">+91 82378 13940</a></p>
             <p>Kolhapur, Maharashtra, India</p>
             <p><a href="mailto:info@mechtec.in" className="hover:text-primary transition-colors">info@mechtec.in</a></p>
+            <p>GST: {GST_NUMBER}</p>
+            <p className="pt-2">
+              <a href={INDIAMART_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                Find us on IndiaMART
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -71,6 +79,11 @@ const Footer = () => (
       <div className="border-t border-border mt-10 pt-6 text-center">
         <p className="font-barlow text-xs text-muted-foreground">
           © {new Date().getFullYear()} Mechatronics Technology. All rights reserved.
+        </p>
+        <p className="font-barlow text-xs text-muted-foreground mt-2 inline-flex items-center gap-1">
+          Site created with love
+          <Heart className="w-3 h-3 text-secondary fill-secondary" aria-hidden="true" />
+          by LocalLandingCo
         </p>
       </div>
     </div>

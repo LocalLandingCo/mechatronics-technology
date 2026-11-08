@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Phone, MapPin, Mail, Send, Loader2 } from 'lucide-react';
+import { Phone, MapPin, Mail, Send, Loader2, ExternalLink } from 'lucide-react';
+import { INDIAMART_URL, GST_NUMBER } from '@/data/company';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -204,6 +205,18 @@ const Contact = () => {
                     <div className="font-barlow text-xs text-muted-foreground">Email us</div>
                   </div>
                 </a>
+
+                <a href={INDIAMART_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
+                  <div className="w-9 h-9 rounded bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <ExternalLink className="w-4 h-4 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-barlow text-sm text-foreground">IndiaMART</div>
+                    <div className="font-barlow text-xs text-muted-foreground">View our company page</div>
+                  </div>
+                </a>
+
+                <p className="font-barlow text-xs text-muted-foreground pt-1">GST: {GST_NUMBER}</p>
               </div>
             </div>
           </div>

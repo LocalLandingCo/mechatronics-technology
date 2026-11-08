@@ -79,7 +79,7 @@ const Products = () => {
 
         {/* Products Grid */}
         <div className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-5 ${isVisible ? 'animate-fade-up delay-400' : 'opacity-0'}`}>
-          {activeCat.products.map((product) => (
+          {activeCat.products.slice(0, 6).map((product) => (
             <div
               key={product.slug}
               className="glow-card group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300 flex flex-col"
@@ -88,7 +88,7 @@ const Products = () => {
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-contain bg-white p-2 group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
  decoding="async" width={1024} height={1024}
                 />

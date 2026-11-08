@@ -52,13 +52,13 @@ const ProductsPage = () => {
                   {cat.products.map((product) => (
                     <div
                       key={product.slug}
-                      className="group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300 flex flex-col"
+                      className="glow-card group border border-border rounded-lg overflow-hidden bg-card/30 backdrop-blur hover:border-primary/40 transition-all duration-300 flex flex-col"
                     >
                       <Link to={`/products/${product.slug}`} className="block aspect-[4/3] overflow-hidden bg-muted">
                         <img
                           src={product.image}
                           alt={product.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-contain bg-white p-2 group-hover:scale-105 transition-transform duration-300"
                           loading="lazy"
  decoding="async" width={1024} height={1024}
                         />

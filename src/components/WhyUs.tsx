@@ -1,27 +1,13 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { SlidersHorizontal, MessagesSquare, PencilRuler, CalendarCheck } from 'lucide-react';
+import { ShieldCheck, Truck, Handshake, Scale, BadgeIndianRupee, Package } from 'lucide-react';
 
 const reasons = [
-  {
-    icon: SlidersHorizontal,
-    title: 'Help choosing the right instrument',
-    desc: 'Tell us what you need to measure and the range. We match it to a sensor that fits your application.',
-  },
-  {
-    icon: MessagesSquare,
-    title: 'Answers from technical people',
-    desc: 'The company was founded by technologists, so your questions get an engineering answer.',
-  },
-  {
-    icon: PencilRuler,
-    title: 'Custom requirements',
-    desc: "If a standard model doesn't fit your setup, ask us about a custom solution.",
-  },
-  {
-    icon: CalendarCheck,
-    title: 'Availability confirmed with your quote',
-    desc: 'Every quote covers availability, so you can plan your project around it.',
-  },
+  { icon: ShieldCheck, title: 'Quality assured products', desc: 'Instruments chosen for ease of use, strong performance and a long operating life.' },
+  { icon: Truck, title: 'Timely deliveries', desc: 'Shipped by road to buyers across India. IndiaMART buyers rate our delivery at 100%.' },
+  { icon: Handshake, title: 'Transparent dealings', desc: 'Clear commercial dealings have made us a preferred name among our clients.' },
+  { icon: Scale, title: 'Ethical business policies', desc: 'A GST-registered business, trading since 2018.' },
+  { icon: BadgeIndianRupee, title: 'Industry leading prices', desc: 'Economical pricing across diverse product configurations.' },
+  { icon: Package, title: 'Careful packing', desc: 'Goods are packed into standard corrugated boxes for delivery.' },
 ];
 
 const WhyUs = () => {
@@ -38,7 +24,7 @@ const WhyUs = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {reasons.map((reason, i) => (
             <div
               key={reason.title}

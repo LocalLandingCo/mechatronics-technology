@@ -4,10 +4,12 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import LogoMark from '@/components/LogoMark';
 
 const differentiators = [
-  'Uncompromising Quality Standards',
-  'Customer-Centric Service',
-  'Timely Delivery Assurance',
-  'Custom Solutions & Technical Support',
+  'Quality assured products',
+  'Timely deliveries',
+  'Transparent dealings',
+  'Ethical business policies',
+  'Industry leading prices',
+  'Goods packed in standard corrugated boxes',
 ];
 
 const About = ({ compact = false }: { compact?: boolean }) => {
@@ -20,7 +22,7 @@ const About = ({ compact = false }: { compact?: boolean }) => {
           <LogoMark className="mx-auto h-14 w-14 text-primary mb-4" />
           <h2 className="font-rajdhani font-bold text-3xl md:text-4xl text-foreground">About Mechatronics Technology</h2>
           <p className="font-barlow text-muted-foreground leading-relaxed mt-4">
-            A Kolhapur-based wholesale distributor and trader of sensing and measurement instruments, founded by seasoned technologists and supplying Indian industry since 2018.
+            Established in 2018, we are a Kolhapur-based wholesale trader of sensors, measurement instruments and protective packaging, working under the guidance of our mentor, Mr. Akshay Kulkarni.
           </p>
           <Link to="/about" className="inline-flex items-center gap-2 font-rajdhani font-semibold text-primary mt-6 hover:underline">
             More about us
@@ -59,10 +61,10 @@ const About = ({ compact = false }: { compact?: boolean }) => {
               <span className="text-primary">Precision</span>
             </h2>
             <p className="font-barlow text-muted-foreground leading-relaxed mb-6">
-              Mechatronics Technology is a Kolhapur-based wholesale distributor and trader of high-performance sensing and measurement instruments. Founded by seasoned technologists, we represent leading global principals to deliver world-class sensors to Indian industry.
+              Established in 2018, Mechatronics Technology is a Kolhapur-based wholesale trader of digital meters, Leeb hardness testers, load cells, tilt sensors and protective packaging. Our products are valued by clients for being easy to use, performing well and lasting a long time, and they are available in diverse configurations.
             </p>
             <p className="font-barlow text-muted-foreground leading-relaxed mb-8">
-              Our product range includes torque sensors, load cells, force sensors, inclinometers, and protective packaging solutions — all backed by rigorous quality standards and expert technical guidance.
+              We work under the guidance of our mentor, Mr. Akshay Kulkarni, whose knowledge and experience in this field have helped us build a large clientele across India.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-3">

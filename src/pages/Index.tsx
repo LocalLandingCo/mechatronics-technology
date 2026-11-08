@@ -5,6 +5,7 @@ const About = lazy(() => import('@/components/About'));
 const Products = lazy(() => import('@/components/Products'));
 const Markets = lazy(() => import('@/components/Markets'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
+const Reviews = lazy(() => import('@/components/Reviews'));
 const Contact = lazy(() => import('@/components/Contact'));
 const Footer = lazy(() => import('@/components/Footer'));
 import { useSEO } from '@/hooks/useSEO';
@@ -25,6 +26,7 @@ const Index = () => {
       <Products />
       <Markets />
       <WhyUs />
+      <Reviews />
       <About compact />
       <Contact />
       <Footer />
