@@ -166,8 +166,8 @@
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(44px) scale(0.985); filter: blur(8px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes count-up {
@@ -192,7 +192,7 @@
 }
 
 .animate-fade-up {
-  animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
 }
 

@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 const About = lazy(() => import('@/components/About'));
 const Products = lazy(() => import('@/components/Products'));
 const Markets = lazy(() => import('@/components/Markets'));
+const WhyUs = lazy(() => import('@/components/WhyUs'));
 const Contact = lazy(() => import('@/components/Contact'));
 const Footer = lazy(() => import('@/components/Footer'));
 import { useSEO } from '@/hooks/useSEO';
@@ -21,9 +22,10 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Suspense fallback={null}>
-      <About />
       <Products />
       <Markets />
+      <WhyUs />
+      <About compact />
       <Contact />
       <Footer />
       </Suspense>

@@ -3,12 +3,17 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Phone, MapPin, Mail, Send, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { catalogue } from '@/data/products';
 import { useToast } from '@/hooks/use-toast';
 import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined;
 const WHATSAPP_NUMBER = '918237813940';
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello, I would like to know more about your products.')}`;
+
+const labelClass = 'font-barlow text-sm text-foreground';
+const fieldClass = 'bg-card/50 border-border font-barlow';
 
 const Contact = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -32,11 +37,16 @@ const Contact = () => {
 
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
-      subject: 'New enquiry from mechtec.in',
+      subject: 'New quote request from mechtec.in',
       name: formData.get('name') as string,
       email: formData.get('email') as string,
       phone: (formData.get('phone') as string) || 'Not provided',
-      message: formData.get('message') as string,
+      company: (formData.get('company') as string) || 'Not provided',
+      product: formData.get('product') as string,
+      capacity_or_range: (formData.get('range') as string) || 'Not provided',
+      quantity: (formData.get('quantity') as string) || 'Not provided',
+      required_by: (formData.get('requiredBy') as string) || 'Not provided',
+      message: (formData.get('message') as string) || 'Not provided',
     };
 
     setLoading(true);
@@ -48,13 +58,13 @@ const Contact = () => {
       });
 
       if (res.status === 200) {
-        toast({ title: 'Message Sent!', description: "We'll get back to you shortly." });
+        toast({ title: 'Quote request sent', description: 'We typically respond within one business day.' });
         form.reset();
       } else {
         throw new Error('Submission failed');
       }
     } catch {
-      toast({ title: 'Error', description: 'Failed to send message. Please try again.', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Your request was not sent. Try again, or call +91 82378 13940.', variant: 'destructive' });
     } finally {
       setLoading(false);
     }
@@ -67,7 +77,7 @@ const Contact = () => {
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
           <span className="font-barlow text-xs tracking-widest text-primary uppercase">Get In Touch</span>
           <h2 className="font-rajdhani font-bold text-3xl md:text-4xl lg:text-5xl mt-3 text-foreground">
-            Contact <span className="text-primary">Us</span>
+            Request a <span className="text-primary">Quote</span>
           </h2>
         </div>
 
@@ -78,18 +88,66 @@ const Contact = () => {
             className={`space-y-5 ${isVisible ? 'animate-fade-up delay-200' : 'opacity-0'}`}
           >
             <div className="grid sm:grid-cols-2 gap-5">
-              <Input name="name" placeholder="Your Name" required className="bg-card/50 border-border font-barlow" />
-              <Input name="email" type="email" placeholder="Email Address" required className="bg-card/50 border-border font-barlow" />
+              <div className="space-y-2">
+                <Label htmlFor="quote-name" className={labelClass}>Name *</Label>
+                <Input id="quote-name" name="name" autoComplete="name" required className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="quote-email" className={labelClass}>Work email *</Label>
+                <Input id="quote-email" name="email" type="email" autoComplete="email" required className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="quote-company" className={labelClass}>Company</Label>
+                <Input id="quote-company" name="company" autoComplete="organization" className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="quote-phone" className={labelClass}>Phone</Label>
+                <Input id="quote-phone" name="phone" type="tel" autoComplete="tel" className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="quote-product" className={labelClass}>Product *</Label>
+                <select
+                  id="quote-product"
+                  name="product"
+                  required
+                  defaultValue=""
+                  className={`flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm text-foreground ${fieldClass}`}
+                >
+                  <option value="" disabled>Select a product</option>
+                  {catalogue.map((category) => (
+                    <optgroup key={category.id} label={category.title}>
+                      {category.products.map((product) => (
+                        <option key={product.slug} value={product.title}>{product.title}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                  <option value="Not sure, need advice">Not sure, need advice</option>
+                </select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="quote-range" className={labelClass}>Capacity or range</Label>
+                <Input id="quote-range" name="range" placeholder="e.g. 500 Nm" className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="quote-quantity" className={labelClass}>Quantity</Label>
+                <Input id="quote-quantity" name="quantity" inputMode="numeric" className={fieldClass} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="quote-required-by" className={labelClass}>Needed by</Label>
+                <Input id="quote-required-by" name="requiredBy" placeholder="e.g. within 4 weeks" className={fieldClass} />
+              </div>
             </div>
-            <Input name="phone" type="tel" placeholder="Phone Number" className="bg-card/50 border-border font-barlow" />
-            <Textarea name="message" placeholder="Your Message" rows={5} required className="bg-card/50 border-border font-barlow resize-none" />
+            <div className="space-y-2">
+              <Label htmlFor="quote-message" className={labelClass}>Application details</Label>
+              <Textarea id="quote-message" name="message" rows={4} className={`${fieldClass} resize-none`} />
+            </div>
             <button
               type="submit"
               disabled={loading}
               className="font-rajdhani font-semibold flex items-center gap-2 px-7 py-3 rounded bg-primary text-primary-foreground hover:brightness-110 transition-all cyan-glow disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-              {loading ? 'Sending...' : 'Send Message'}
+              {loading ? 'Sending...' : 'Request Quote'}
             </button>
           </form>
 

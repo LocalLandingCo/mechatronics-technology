@@ -81,7 +81,7 @@ const ProductDetail = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted border border-border flex items-center justify-center">
-              <img src={product.image} alt={product.title} className="w-full h-full object-contain p-6" decoding="async" width={1024} height={1024} fetchPriority="high" />
+              <img src={product.image} alt={product.title} className="w-full h-full object-contain p-6" decoding="async" width={1024} height={1024} {...{ fetchpriority: 'high' }} />
             </div>
 
             <div>
