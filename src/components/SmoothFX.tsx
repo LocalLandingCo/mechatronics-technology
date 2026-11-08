@@ -16,7 +16,7 @@ const SmoothFX = () => {
     let lenis: Lenis | null = null;
     let raf = 0;
     if (fine && !calm) {
-      lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9, anchors: true });
+      lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9 });
       setSmoothScroller(lenis);
       const loop = (t: number) => {
         lenis?.raf(t);

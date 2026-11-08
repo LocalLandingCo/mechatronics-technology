@@ -1,6 +1,14 @@
+import type { MouseEvent } from 'react';
 import { Calendar, Phone, Star, BadgeCheck } from 'lucide-react';
 import HeroCarousel from '@/components/HeroCarousel';
 import { buyerRating, INDIAMART_REVIEWS_URL } from '@/data/company';
+import { scrollToSection } from '@/lib/smoothScroll';
+
+// Handled here because the page's <base> tag can make a plain "#section" link reload the page.
+const goToSection = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+  event.preventDefault();
+  scrollToSection(id);
+};
 
 const facts = [
   { icon: Calendar, value: 'Since 2018', label: 'Kolhapur, Maharashtra' },
@@ -27,12 +35,14 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
+                onClick={(event) => goToSection(event, 'contact')}
                 className="font-display font-semibold px-7 py-3 rounded bg-secondary text-secondary-foreground hover:brightness-110 transition-all"
               >
                 Get a quote
               </a>
               <a
                 href="#products"
+                onClick={(event) => goToSection(event, 'products')}
                 className="font-display font-semibold px-7 py-3 rounded border border-border text-foreground hover:border-primary hover:text-primary transition-all"
               >
                 Browse Products
