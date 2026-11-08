@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { setSmoothScroller } from '@/lib/smoothScroll';
 
 /**
  * Two page-wide effects, no DOM output:
@@ -16,6 +17,7 @@ const SmoothFX = () => {
     let raf = 0;
     if (fine && !calm) {
       lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9, anchors: true });
+      setSmoothScroller(lenis);
       const loop = (t: number) => {
         lenis?.raf(t);
         raf = requestAnimationFrame(loop);
@@ -35,6 +37,7 @@ const SmoothFX = () => {
 
     return () => {
       cancelAnimationFrame(raf);
+      setSmoothScroller(null);
       lenis?.destroy();
       window.removeEventListener('pointermove', onMove);
     };
