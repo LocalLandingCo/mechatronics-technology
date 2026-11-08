@@ -81,8 +81,9 @@ const Footer = () => (
           © {new Date().getFullYear()} Mechatronics Technology. All rights reserved.
         </p>
         <p className="font-barlow text-xs text-muted-foreground mt-2 inline-flex items-center gap-1">
-          Site created with love
-          <Heart className="w-3 h-3 text-secondary fill-secondary" aria-hidden="true" />
+          Made with
+          <Heart className="w-3 h-3 text-red-500 fill-red-500" aria-hidden="true" />
+          <span className="sr-only">love</span>
           by LocalLandingCo
         </p>
       </div>
