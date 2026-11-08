@@ -6,10 +6,9 @@ import LogoMark from './LogoMark';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
   { label: 'Products', href: '/products' },
   { label: 'Markets', href: '/markets' },
-  { label: 'Careers', href: '/careers' },
+  { label: 'About', href: '/about' },
 ];
 
 const Navbar = () => {

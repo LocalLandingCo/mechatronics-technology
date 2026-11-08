@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import LogoMark from '@/components/LogoMark';
+import { allProducts } from '@/data/products';
 
 const Footer = () => (
   <footer className="relative bg-card/80 border-t border-border py-12 noise-bg">
     <div className="container mx-auto px-4 md:px-8 relative z-10">
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2 font-rajdhani font-bold text-lg text-foreground mb-2">
@@ -12,7 +13,7 @@ const Footer = () => (
             <span><span className="text-primary">MECHATRONICS</span> TECHNOLOGY</span>
           </div>
           <p className="font-barlow text-sm text-muted-foreground leading-relaxed">
-            Precision Sensing & Measurement Solutions — India's trusted industrial sensor distributor.
+            Wholesale distributor of precision sensing and measurement instruments, supplying Indian industry since 2018.
           </p>
         </div>
 
@@ -39,13 +40,30 @@ const Footer = () => (
           </div>
         </div>
 
+        {/* Products */}
+        <div>
+          <h4 className="font-rajdhani font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Products</h4>
+          <div className="flex flex-col gap-2">
+            {allProducts.slice(0, 5).map((product) => (
+              <Link
+                key={product.slug}
+                to={`/products/${product.slug}`}
+                className="font-barlow text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                {product.title}
+              </Link>
+            ))}
+            <Link to="/products" className="font-barlow text-sm text-primary hover:underline">All products</Link>
+          </div>
+        </div>
+
         {/* Contact */}
         <div>
           <h4 className="font-rajdhani font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Contact</h4>
           <div className="font-barlow text-sm text-muted-foreground space-y-1">
-            <p>+91 82378 13940</p>
+            <p><a href="tel:+918237813940" className="hover:text-primary transition-colors">+91 82378 13940</a></p>
             <p>Kolhapur, Maharashtra, India</p>
-            <p>info@mechtec.in</p>
+            <p><a href="mailto:info@mechtec.in" className="hover:text-primary transition-colors">info@mechtec.in</a></p>
           </div>
         </div>
       </div>

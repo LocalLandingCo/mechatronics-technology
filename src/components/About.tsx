@@ -1,5 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import LogoMark from '@/components/LogoMark';
 
 const differentiators = [
@@ -9,8 +10,26 @@ const differentiators = [
   'Custom Solutions & Technical Support',
 ];
 
-const About = () => {
+const About = ({ compact = false }: { compact?: boolean }) => {
   const { ref, isVisible } = useScrollReveal();
+
+  if (compact) {
+    return (
+      <section id="about" className="relative py-14 md:py-20 noise-bg grid-lines overflow-hidden" ref={ref}>
+        <div className={`container mx-auto px-4 md:px-8 relative z-10 max-w-3xl text-center ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
+          <LogoMark className="mx-auto h-14 w-14 text-primary mb-4" />
+          <h2 className="font-rajdhani font-bold text-3xl md:text-4xl text-foreground">About Mechatronics Technology</h2>
+          <p className="font-barlow text-muted-foreground leading-relaxed mt-4">
+            A Kolhapur-based wholesale distributor and trader of sensing and measurement instruments, founded by seasoned technologists and supplying Indian industry since 2018.
+          </p>
+          <Link to="/about" className="inline-flex items-center gap-2 font-rajdhani font-semibold text-primary mt-6 hover:underline">
+            More about us
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="about" className="relative py-14 md:py-20 noise-bg grid-lines overflow-hidden" ref={ref}>
